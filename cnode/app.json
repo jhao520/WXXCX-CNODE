@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/novice/novice",
+    "pages/api/api"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTitleText": "CNODE",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999999",
+    "borderStyle": "white",
+    "backgroundColor": "#F7F7FA",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "images/icon/N_y.png",
+        "iconPath": "images/icon/N.png"
+      },
+      {
+        "text": "新手入门",
+        "pagePath": "pages/novice/novice",
+        "selectedIconPath": "images/icon/O_y.png",
+        "iconPath": "images/icon/O.png"
+      },
+      {
+        "text": "API",
+        "pagePath": "pages/api/api",
+        "selectedIconPath": "images/icon/D_y.png",
+        "iconPath": "images/icon/D.png"
+      },
+      {
+        "text": "关于",
+        "pagePath": "pages/about/about",
+        "selectedIconPath": "images/icon/E_y.png",
+        "iconPath": "images/icon/E.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

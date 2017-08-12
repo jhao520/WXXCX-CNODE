@@ -1,0 +1,68 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view> -->
+</view>
+<swiper autoplay="auto" interval="5000" duration="500">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="weui-panel weui-panel_access">
+  <view class="weui-panel__hd">
+    <ul class="weui-media-box__info">
+      <li class="{{params.tab==''?'tabSelected':''}}" bindtap="changeList" data-id="">全部</li>
+      <li class="{{params.tab=='good'?'tabSelected':''}}" bindtap="changeList" data-id="good">精华</li>
+      <li class="{{params.tab=='ask'?'tabSelected':''}}" bindtap="changeList" data-id="ask">问答</li>
+      <li class="{{params.tab=='share'?'tabSelected':''}}" bindtap="changeList" data-id="share">分享</li>
+      <li class="{{params.tab=='job'?'tabSelected':''}}" bindtap="changeList" data-id="job">招聘</li>
+    </ul>
+  </view>
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_appmsg" wx:for="{{lists}}" wx:for-item="list">
+      <view class="weui-media-box__hd">
+        <image src="{{list.author.avatar_url}}" alt="{{list.newstype}}" bindtap="changeGallery" data-imgUrl="{{list.author.avatar_url}}"/>
+      </view>
+      <view class="weui-media-box__bd" bindtap="toDetail" data-id="{{list.id}}">
+        <view class="weui-media-box__title">
+					<view class="sign">
+						<span class="put_top" wx:if="{{list.top}}">置顶</span>
+						<span class="put_top" wx:if="{{!list.top&&list.good}}">精华</span>
+						<span class="topiclist-tab" wx:if="{{!list.top&&!list.good&&list.tab=='ask'}}">问答</span>
+						<span class="topiclist-tab" wx:if="{{!list.top&&!list.good&&list.tab=='share'}}">分享</span>
+						<span class="topiclist-tab" wx:if="{{!list.top&&!list.good&&list.tab=='job'}}">招聘</span>
+					</view>
+					{{list.title}}
+				</view>
+        <!-- <p class="weui-media-box__desc" ng-bind-html="list.content|html"></p> -->
+        <ul class="weui-media-box__info">
+          <li class="weui-media-box__info__meta">
+            <span class="count">{{list.author.loginname}}</span>
+            <span class="count fr">发布于 {{list.create_at}}</span>
+          </li>
+          <li class="weui-media-box__info__meta">
+            <span class="count icon-fangwen">{{list.visit_count}}</span>
+            <span class="count icon-pinglun">{{list.reply_count}}</span>
+          </li>
+        </ul>
+      </view>
+    </view>
+  </view>
+  <view class="weui-panel__ft" hidden="{{!isNoMore}}">
+    <view class="weui-cell weui-cell_access weui-cell_link" hidden="{{!isLoadMore}}" bindtap="loadMore">
+      <view class="weui-cell__bd">查看更多</view>
+    </view>
+    <view class="weui-loadmore" hidden="{{isLoadMore}}">
+      <icon class="weui-loading"></icon>
+      <span class="weui-loadmore__tips">正在加载</span>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" hidden="{{isNoMore}}">
+    <span class="weui-loadmore__tips">暂无数据</span>
+  </view>
+
+</view>
