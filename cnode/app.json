@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/about/about",
     "pages/novice/novice",
-    "pages/api/api"
+    "pages/api/api",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

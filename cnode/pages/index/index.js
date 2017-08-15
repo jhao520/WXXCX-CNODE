@@ -22,12 +22,6 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   // 切换分类
   changeList: function (e) {
     var id = e.target.dataset.id;
@@ -78,6 +72,9 @@ Page({
     //     userInfo: userInfo
     //   })
     // })
+    this.setData({
+      isLoadMore: false,
+    })
     this.loading(that.data.params)
   },
   // 页面加载函数，发送ajax请求
@@ -96,7 +93,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data.data)
         var lis = that.data.lists
         that.setData({
           isLoadMore: true,
@@ -104,6 +100,10 @@ Page({
         })
       }
     })
-
+  },
+  toDetail: function (e) {
+    wx.navigateTo({
+      url: "../detail/detail?id=" + e.currentTarget.dataset.id
+    })
   }
 })

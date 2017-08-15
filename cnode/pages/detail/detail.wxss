@@ -1,0 +1,100 @@
+@import "/wxParse/wxParse.wxss";
+@import "../../weui.wxss";
+@import "../../iconfont.wxss";
+
+.page {
+  padding: 20px 5px 20px;
+}
+
+.page h2 {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.5em;
+}
+
+.subTit {
+  color: #838383;
+}
+
+.subTit span::before {
+  content: " • ";
+}
+
+.fr {
+  float: right;
+}
+
+.user_action .icon {
+  font-size: 9px;
+}
+
+.weui-article {
+  padding: 10px;
+  background: #fff;
+}
+
+.borderTop {
+  border-top: 1px solid #e5e5e5;
+}
+
+.page__bd .header {
+  padding: 10px;
+  background-color: #f6f6f6;
+  font-size: 14px;
+}
+
+.cell {
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  position: relative;
+  font-size: 14px;
+}
+
+.user_avatar {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.user_avatar .user_avatar_img {
+  width: 100%;
+  height: 100%;
+}
+
+.user_info {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.user_action {
+  float: right;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.user_action .icon, .user_action .up-count {
+  font-size: 15px;
+  color: gray;
+}
+
+.reply_by_author {
+  color: #fff;
+  background-color: #6ba44e;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.reply_content {
+  clear: both;
+  padding-left: 0;
+  padding-top: 5px;
+  margin-bottom:10px;
+}
+
+.h3 {
+  font-weight: 900;
+  font-size: 18px;
+}

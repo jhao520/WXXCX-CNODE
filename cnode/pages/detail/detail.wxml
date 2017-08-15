@@ -1,0 +1,47 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="page article js_show">
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="h3">{{article.title}}</view>
+      <p class="subTit">
+        <!-- <span>发布于 {{article.create_at}} </span> -->
+        <span>作者 {{article.author.loginname}} </span>
+        <span>{{article.visit_count}} 浏览</span>
+        <span wx:if="{{article.tab=='ask'}}">来自 问答</span>
+        <span wx:if="{{article.tab=='share'}}">来自 分享</span>
+        <span wx:if="{{article.tab=='job'}}">来自 招聘</span>
+      </p>
+    </view>
+    <view class="weui-article borderTop">
+      <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class="header">
+      <span class="col_fade">{{article.reply_count}} 回复</span>
+    </view>
+    <view class="cell reply_item" wx:for="{{article.replies}}" wx:for-item="reply">
+      <view class="author_content">
+        <span class="user_avatar">
+          <image class="user_avatar_img" src="{{reply.author.avatar_url}}" title="{{reply.author.loginname}}" />
+        </span>
+        <view class="user_info">
+          <span class="dark reply_author">{{reply.author.loginname}} </span>
+          <span class="reply_time"> {{index+1}}楼 • </span>
+          <span class="reply_by_author" wx:if="{{reply.author.loginname===article.author.loginname}}">作者</span>
+        </view>
+        <view class="user_action">
+          <span class="icon icon-zan" title="喜欢" wx:if="{{reply.ups.length!=0}}"></span>
+          <span class="up-count" bindtap="dianzan">{{reply.ups.length!=0?reply.ups.length:""}}</span>
+        </view>
+      </view>
+      <view wx:for="{{replyTemArray}}" wx:key="" wx:for-index="jdx">
+        <view wx:if="{{index == jdx}}">
+          <view class="reply_content">
+            <template is="wxParse" data="{{wxParseData:item}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
