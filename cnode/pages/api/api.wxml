@@ -1,0 +1,194 @@
+<view class="inner topic">
+  <view class="topic_content">
+    <view class="markdown-text">
+      <p>以下 api 路径均以 <a>https://cnodejs.org/api/v1</a>为前缀</p>
+      <view class="h3">主题</view>
+      <view class="h4">get /topics 主题首页</view>
+      <p>接收 get 参数</p>
+      <ul>
+        <li>page
+          <text>Number</text> 页数</li>
+        <li>tab
+          <text>String</text> 主题分类。目前有
+          <text>ask</text>
+          <text>share</text>
+          <text>job</text>
+          <text>good</text>
+        </li>
+        <li>limit
+          <text>Number</text> 每一页的主题数量
+        </li>
+        <li>mdrender
+          <text>String</text> 当为
+          <text>false</text> 时，不渲染。默认为
+          <text>true</text>，渲染出现的所有 markdown 格式文本。
+        </li>
+      </ul>
+      <p>示例：<a>/api/v1/topics</a></p>
+      <view class="h4">get /topic/:id 主题详情</view>
+      <p>接收 get 参数</p>
+      <ul>
+        <li>mdrender
+          <text>String</text> 当为
+          <text>false</text> 时，不渲染。默认为
+          <text>true</text>，渲染出现的所有 markdown 格式文本。
+        </li>
+        <li>accesstoken
+          <text>String</text> 当需要知道一个主题是否被特定用户收藏以及对应评论是否被特定用户点赞时，才需要带此参数。会影响返回值中的
+          <text>is_collect</text> 以及
+          <text>replies</text> 列表中的
+          <text>is_uped</text> 值。
+        </li>
+      </ul>
+      <p>示例： <a>/api/v1/topic/5433d5e4e737cbe96dcef312</a></p>
+      <view class="h4">post /topics 新建主题</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+        <li>title
+          <text>String</text> 标题
+        </li>
+        <li>tab
+          <text>String</text> 目前有
+          <text>ask</text>
+          <text>share</text>
+          <text>job</text>
+          <text>dev</text>。开发新客户端的同学，请务必将你们的测试帖发在
+          <text>dev</text> 专区，以免污染日常的版面，否则会进行封号一周处理。
+        </li>
+        <li>content
+          <text>String</text> 主体内容
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h4">post /topics/update 编辑主题</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+        <li>topic_id
+          <text>String</text> 主题id
+        </li>
+        <li>title
+          <text>String</text> 标题
+        </li>
+        <li>tab
+          <text>String</text> 目前有
+          <text>ask</text>
+          <text>share</text>
+          <text>job</text>
+        </li>
+        <li>content
+          <text>String</text> 主体内容
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h3">主题收藏</view>
+      <view class="h4">post /topic_collect/collect 收藏主题</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+        <li>topic_id
+          <text>String</text> 主题的id
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h4">post /topic_collect/de_collect 取消主题</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+        <li>topic_id
+          <text>String</text> 主题的id
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h4">get /topic_collect/:loginname 用户所收藏的主题</view>
+      <p>示例：<a>/api/v1/topic_collect/alsotang</a></p>
+      <view class="h3">评论</view>
+      <view class="h4">post /topic/:topic_id/replies 新建评论</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+        <li>content
+          <text>String</text> 评论的主体
+        </li>
+        <li>reply_id
+          <text>String</text> 如果这个评论是对另一个评论的回复，请务必带上此字段。这样前端就可以构建出评论线索图。
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h4">post /reply/:reply_id/ups 为评论点赞</view>
+      <p>接受 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text>
+        </li>
+      </ul>
+      <p>接口会自动判断用户是否已点赞，如果否，则点赞；如果是，则取消点赞。点赞的动作反应在返回数据的action 字段中， up or down。
+      </p>
+      <p>返回值示例</p>
+      <view class="h3">用户</view>
+      <view class="h4">get /user/:loginname 用户详情</view>
+      <p>示例：<a>/api/v1/user/alsotang</a>
+      </p>
+      <view class="h4">post /accesstoken 验证 accessToken 的正确性</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text> 用户的 accessToken
+        </li>
+      </ul>
+      <p>如果成功匹配上用户，返回成功信息。否则 403。</p>
+      <p>返回值示例</p>
+      <view class="h3">消息通知</view>
+      <view class="h4">get /message/count 获取未读消息数</view>
+      <p>接收 get 参数 accesstoken String</p>
+      <p>返回值示例</p>
+      <view>get /messages 获取已读和未读消息</view>
+      <p>接收 get 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text>
+        </li>
+        <li>mdrender
+          <text>String</text> 当为
+          <text>false</text> 时，不渲染。默认为
+          <text>true</text>，渲染出现的所有 markdown 格式文本。
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h4">post /message/mark_all 标记全部已读</view>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text>
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view>post /message/mark_one/:msg_id 标记单个消息为已读</view>
+      <p>请求示例： <a>/message/mark_one/58ec7d39da8344a81eee0c14</a></p>
+      <p>接收 post 参数</p>
+      <ul>
+        <li>accesstoken
+          <text>String</text>
+        </li>
+      </ul>
+      <p>返回值示例</p>
+      <view class="h3">知识点</view>
+      <ul>
+        <li>如何获取 accessToken？ 用户登录后，在设置页面可以看到自己的 accessToken。 建议各移动端应用使用手机扫码的形式登录，验证使用
+          <text>/accesstoken</text> 接口，登录后长期保存 accessToken。
+        </li>
+      </ul>
+    </view>
+  </view>
+</view>

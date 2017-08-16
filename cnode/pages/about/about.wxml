@@ -1,6 +1,36 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log" wx:key="*this">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view class="inner topic">
+  <view class="topic_content">
+    <view class="markdown-text">
+      <view class="h3">关于</view>
+      <view>CNode 社区为国内最大最具影响力的 Node.js 开源技术社区，致力于 Node.js 的技术研究。</view>
+      <view>CNode 社区由一批热爱 Node.js 技术的工程师发起，目前已经吸引了互联网各个公司的专业技术人员加入，我们非常欢迎更多对 Node.js 感兴趣的朋友。</view>
+      <view>CNode 的 SLA 保证是，一个9，即 90.000000%。</view>
+      <view>社区目前由<a>@alsotang</a> 在维护，有问题请联系：
+        <a>httviews://github.com/alsotang</a>
+      </view>
+      <view>请关注我们的官方微博：
+        <a>http://weibo.com/cnodejs</a>
+      </view>
+      <view class="h3">移动客户端</view>
+      <view>客户端由<a>@soliury</a> 开发维护。</view>
+      <view>源码地址：
+        <a>https://github.com/soliury/noder-react-native</a> 。
+      </view>
+      <view>立即体验 CNode 客户端，直接扫描页面右侧二维码。</view>
+      <view>另，安卓用户同时可选择：
+        <a>https://github.com/TakWolf/CNode-Material-Design</a> ，这是 Java 原生开发的安卓客户端。
+      </view>
+    </view>
+    <view>
+      <view class="h3">LOGO</view>
+      <view>
+        白底：
+        <view>/public/images/cnodejs.svg</view>
+      </view>
+      <view>
+        黑底：
+        <view>/public/images/cnodejs_light.svg</view>
+      </view>
+    </view>
+  </view>
 </view>
